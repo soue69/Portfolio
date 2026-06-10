@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOE SAN OO | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bg-image-layer {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background-image: url('img/sou.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(70px) brightness(1.4) opacity(0.45);
+            z-index: -1;
+        }
+
+        .portfolio-card {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            background: linear-gradient(to right, #0284c7, #2563eb, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .school-tag {
+            display: inline-block;
+            margin-top: 8px;
+            background: rgba(37, 99, 235, 0.08);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #1e3a8a;
+            font-weight: 500;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to right, #0284c7, #3b82f6, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: #334155;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: #1e3a8a;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin: 6px 6px 0 0;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+
+        .favorite {
+            background: rgba(2, 132, 199, 0.06);
+            border-color: rgba(2, 132, 199, 0.3);
+            color: #0369a1;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            border-radius: 14px;
+        }
+
+        .ghub {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #0369a1;
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin: 6px 6px 0 0;
+        }
+
+        .ghub a {
+            color: #0369a1;
+            text-decoration: none;
+        }
+
+        .ghub:hover {
+            background: rgba(2, 132, 199, 0.06);
+            border-color: rgba(2, 132, 199, 0.3);
+            color: #0369a1;
+        }
+
+        .links-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #ff8800, #ff0000);
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .btn-third {
+            background: linear-gradient(135deg, #6b7280, #374151);
+            color: #fff;
+        }
+
+        .btn-third:hover {
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .lang-switch button {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            transition: 0.2s;
+        }
+
+        .lang-switch button.active {
+            background: linear-gradient(135deg, #2563eb, #0ea5e9);
+            color: white;
+        }
+
+        @media (max-width: 500px) {
+            .portfolio-card {
+                padding: 25px;
+            }
+
+            .links-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-image-layer"></div>
+    <main class="portfolio-card">
+        <div class="lang-switch">
+            <button id="enBtn" class="active">EN</button>
+            <button id="jpBtn">JP</button>
+        </div>
+        <header>
+            <div class="profile-pic">
+                <img src="img/sou.jpg" alt="SOE SAN OO">
+            </div>
+            <div class="lang en">
+                <h1>SOE SAN OO</h1>
+            </div>
+            <div class="lang jp" style="display:none;">
+                <h1>ソーサンウー</h1>
+            </div>
+            <div class="lang en">
+                <div class="school-tag">Nihon Kogakuin College</div>
+            </div>
+            <div class="lang jp" style="display:none;">
+                <div class="school-tag">日本工学院専門学校</div>
+            </div>
+            <div class="lang en">
+                <div class="subtitle">Information Technology Student</div>
+            </div>
+            <div class="lang jp" style="display:none;">
+                <div class="subtitle">情報処理学生</div>
+            </div>
+        </header>
+
+        <div class="lang en">
+
+            <section>
+                <h2>About Me</h2>
+                <p>
+                    Hello, I am a student at Nihon Kogakuin College studying Information Technology.
+                    I am interested in software development, especially Python programming and frontend web development.
+                    I enjoy building user-friendly interfaces and turning ideas into real interactive web experiences.
+                </p>
+                <div class="badge">INTP</div>
+                <div class="badge">AB Blood Type</div>
+                <div class="badge">Pisces</div>
+                <div class="badge">Pacifist</div>
+                <div class="badge">Humanist</div>
+            </section>
+
+            <section>
+                <h2>Hobbies & Interests</h2>
+                <p><a class="highlight">Likes</a>: History, Movies & Series, Anime, Music, Rain, Clouds</p></br>
+                <p><a class="highlight">Favourite Foods</a>: Spicy Aburasoba, Miso Soup, Shan Kao Swe</p></br>
+                <p><a class="highlight">Hobbies</a>: Reading History, Watching Movies & Anime, Photography</p>
+            </section>
+
+            <section>
+                <h2>Languages</h2>
+                <div class="skills-grid">
+                    <div class="skill-badge">🇲🇲 Burmese (Native)</div>
+                    <div class="skill-badge favorite">🇬🇧 English (Fluent in Written English | Conversational Speaker)
+                    </div>
+                    <div class="skill-badge">🇯🇵 Japanese (JLPT N2)</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-badge favorite">Python</div>
+                    <div class="skill-badge favorite">HTML5</div>
+                    <div class="skill-badge favorite">CSS3</div>
+                    <div class="skill-badge favorite">JavaScript</div>
+                    <div class="skill-badge">Java</div>
+                    <div class="skill-badge">Linux</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Academic Projects</h2>
+                <div class="project-card">
+                    <h3>Web Class Project</h3>
+                    <div class="ghub">
+                        <a href="https://soue69.github.io/WebDev-Kadai-I/" target="_blank">Band Recommendation(1st
+                            Kadai)</a>
+                    </div>
+                    <div class="ghub">
+                        <a href="https://soue69.github.io/Webdev-Kadai-II/" target="_blank">Movie Blog(2nd Kadai)</a>
+                    </div>
+                    <div class="ghub">
+                        <a href="https://soue69.github.io/Webdev-Kadai-III/" target="_blank">Jiyuukadai(3rd Kadai)</a>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Contact</h2>
+                <div class="links-container">
+                    <a href="mailto:soue6969@gmail.com" class="btn btn-primary">Email</a>
+                    <a href="https://www.instagram.com/souzaninnit/" target="_blank"
+                        class="btn btn-secondary">Instagram</a>
+                    <a href="https://github.com/soue69" target="_blank" class="btn btn-third">GitHub</a>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="lang jp" style="display:none;">
+
+            <section>
+                <h2>自己紹介</h2>
+                <p>
+                    こんにちは、私は日本工学院専門学校で情報処理科の学生です。
+                    ソフトウェア開発に興味があり、特にPythonプログラミングとフロントエンドWeb開発を学んでいます。
+                    ユーザーにとって使いやすいインターフェースを作ることが好きで、アイデアをWeb上で実際の形にしていくことにやりがいを感じています。
+                </p>
+                <div class="badge">INTP</div>
+                <div class="badge">AB型</div>
+                <div class="badge">魚座</div>
+                <div class="badge">平和主義者</div>
+                <div class="badge">人道主義者</div>
+            </section>
+
+            <section>
+                <h2>趣味と関心</h2>
+                <p><a class="highlight">好きなもの</a>: 歴史、映画・ドラマ、アニメ、音楽、雨、雲</p></br>
+                <p><a class="highlight">好きな食べ物</a>: 辛い油そば、味噌汁、シャンカオスエ</p></br>
+                <p><a class="highlight">趣味</a>: 歴史書読むこと、映画やアニメ鑑賞、写真撮影</p>
+            </section>
+
+            <section>
+                <h2>言語</h2>
+                <div class="skills-grid">
+                    <div class="skill-badge">🇲🇲 ビルマ語（母語）</div>
+                    <div class="skill-badge favorite">🇬🇧 英語（文章：流暢 | 会話：実用レベル）</div>
+                    <div class="skill-badge">🇯🇵 日本語（JLPT N2）</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>スキル</h2>
+                <div class="skills-grid">
+                    <div class="skill-badge favorite">Python</div>
+                    <div class="skill-badge favorite">HTML5</div>
+                    <div class="skill-badge favorite">CSS3</div>
+                    <div class="skill-badge favorite">JavaScript</div>
+                    <div class="skill-badge">Java</div>
+                    <div class="skill-badge">Linux</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>制作実績</h2>
+                <div class="project-card">
+                    <h3>Webクラス課題</h3>
+                    <div class="ghub">
+                        <a href="https://soue69.github.io/WebDev-Kadai-I/" target="_blank">バンドおすすめ(初課題)</a>
+                    </div>
+                    <div class="ghub">
+                        <a href="https://soue69.github.io/Webdev-Kadai-II/" target="_blank">映画ブログ(課題2)</a>
+                    </div>
+                    <div class="ghub">
+                        <a href="https://soue69.github.io/Webdev-Kadai-III/" target="_blank">自由課題(課題3)</a>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>連絡先</h2>
+                <div class="links-container">
+                    <a href="mailto:soue6969@gmail.com" class="btn btn-primary">メール</a>
+                    <a href="https://www.instagram.com/souzaninnit/" target="_blank"
+                        class="btn btn-secondary">インスタ</a>
+                    <a href="https://github.com/soue69" target="_blank" class="btn btn-third">ギットハブ</a>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <script>
+        const enBtn = document.getElementById("enBtn");
+        const jpBtn = document.getElementById("jpBtn");
+
+        const enBlocks = document.querySelectorAll(".en");
+        const jpBlocks = document.querySelectorAll(".jp");
+
+        function showEN() {
+            enBlocks.forEach(el => el.style.display = "block");
+            jpBlocks.forEach(el => el.style.display = "none");
+
+            enBtn.classList.add("active");
+            jpBtn.classList.remove("active");
+        }
+
+        function showJP() {
+            jpBlocks.forEach(el => el.style.display = "block");
+            enBlocks.forEach(el => el.style.display = "none");
+
+            jpBtn.classList.add("active");
+            enBtn.classList.remove("active");
+        }
+
+        enBtn.addEventListener("click", showEN);
+        jpBtn.addEventListener("click", showJP);
+
+        showEN();
+    </script>
+
+</body>
+
+</html>
